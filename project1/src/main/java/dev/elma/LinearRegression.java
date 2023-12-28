@@ -1,13 +1,12 @@
 package dev.elma;
 import org.apache.spark.ml.evaluation.RegressionEvaluator;
 import org.apache.spark.ml.feature.VectorAssembler;
-import org.apache.spark.ml.regression.LinearRegression;
 import org.apache.spark.ml.regression.LinearRegressionModel;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
-public class Main {
+public class LinearRegression {
     public static void main(String[] args) {
         //Create a SparkSession
         SparkSession spark = SparkSession.builder().appName("AppMlib").master("local[*]").getOrCreate();
@@ -30,7 +29,7 @@ public class Main {
         trainData.show();
         testData.show();
         //todo: create a Linear Regression model object
-        LinearRegression lr = new LinearRegression();
+        org.apache.spark.ml.regression.LinearRegression lr = new org.apache.spark.ml.regression.LinearRegression();
         lr.setFeaturesCol("features");
         lr.setLabelCol("Sales");
         lr.setMaxIter(10);
